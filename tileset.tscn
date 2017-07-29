@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://12-sbarro-spaghetti-meatballs.tex" type="Texture" id=2]
+
+[node name="root" type="Node2D"]
+
+[node name="char" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 50, 50 )
+
+[node name="spgtti" type="Sprite" parent="."]
+
+transform/pos = Vector2( 162.606, -3.20745 )
+transform/scale = Vector2( 3.5647, 2.48626 )
+texture = ExtResource( 2 )
+region = true
+region_rect = Rect2( 125, 75, 50, 50 )
+
+
