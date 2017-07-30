@@ -1,4 +1,4 @@
-extends Sprite
+extends Node2D
 
 # class member variables go here, for example:
 # var a = 2
@@ -18,12 +18,13 @@ func _process(delta):
 		return
 		
 	var direction = (target - self.get_pos()).normalized()
-	var speed = 100
+	var speed = 1000
 	
 	var motion = direction * speed * delta
 	var new_pos = self.get_pos() + motion
 	self.set_pos(new_pos)
-	
+	print(new_pos)
+	print(target)
 	if (self.get_pos() - target).length() < 2:
 		target = null
 		
