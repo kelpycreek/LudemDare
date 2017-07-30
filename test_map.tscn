@@ -1,19 +1,22 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://test_map.gd" type="Script" id=1]
 [ext_resource path="res://test_tiles.res" type="TileSet" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
-[ext_resource path="res://Mech.gd" type="Script" id=4]
+[ext_resource path="res://AI.gd" type="Script" id=3]
+[ext_resource path="res://art/tank1b.png" type="Texture" id=4]
+[ext_resource path="res://Shooter.gd" type="Script" id=5]
+[ext_resource path="res://Shooter.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Camera.tscn" type="PackedScene" id=7]
 
 [node name="root" type="Node2D"]
 
-transform/pos = Vector2( 630.357, 110.14 )
 script/script = ExtResource( 1 )
 
 [node name="map" type="Node2D" parent="."]
 
 [node name="TileMap" type="TileMap" parent="map"]
 
+transform/pos = Vector2( -188.65, 0 )
 mode = 0
 tile_set = ExtResource( 2 )
 cell/size = Vector2( 64, 64 )
@@ -28,12 +31,27 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( -196620, 2, -196619, 2, -196618, 2, -196617, 2, -196616, 2, -196615, 2, -196614, 2, -196613, 2, -196612, 2, -196611, 2, -196610, 2, -196609, 2, -131084, 2, -131076, 1, -131073, 2, -65548, 2, -65543, 2, -65537, 2, -12, 2, -7, 2, -1, 2, 65524, 2, 65526, 1, 65529, 2, 65535, 2, 131060, 2, 131061, 2, 131062, 2, 131063, 2, 131064, 2, 131065, 2, 131066, 2, 131067, 2, 131068, 2, 131069, 2, 131070, 2, 131071, 2 )
+tile_data = IntArray( -196620, 2, -196619, 2, -196618, 2, -196617, 2, -196616, 2, -196615, 2, -196614, 2, -196613, 2, -196612, 2, -196611, 2, -196610, 2, -196609, 2, -131084, 2, -131076, 1, -131073, 2, -65548, 2, -65543, 2, -65537, 2, -12, 2, -7, 2, -1, 2, 65524, 2, 65526, 1, 65529, 2, 65535, 2, 0, 2, 2, 2, 3, 2, 4, 2, 5, 2, 131060, 2, 131061, 2, 131062, 2, 131063, 2, 131064, 2, 131065, 2, 131066, 2, 131067, 2, 131068, 2, 131069, 2, 131070, 2, 131071, 2, 65537, 2, 65538, 2, 65539, 2, 65540, 2, 65541, 2, 65542, 2, 65543, 2, 65544, 2, 65545, 2, 65546, 2, 131075, 2, 131076, 2, 131077, 2, 131078, 2, 131079, 2, 131080, 2, 196611, 2, 196612, 2, 196613, 2, 196614, 2, 196615, 2, 196616, 2, 196617, 2, 196618, 2, 196637, 2, 262146, 2, 262147, 2, 262148, 2, 262149, 2, 262150, 2, 262151, 2, 262152, 2, 262153, 2, 262154, 2, 262155, 2, 262156, 2, 327681, 2, 327682, 2, 327683, 2, 327684, 2, 327685, 2, 327686, 2, 327687, 2, 327688, 2, 327689, 2, 327690, 2, 327691, 2, 393216, 2, 393217, 2, 393218, 2, 393219, 2, 393220, 2, 393221, 2, 393222, 2, 393223, 2, 393224, 2, 393225, 2, 393226, 2, 458758, 2, 458759, 2, 458760, 2, 458761, 2, 458762, 2, 458763, 2, 720914, 2 )
 
-[node name="mech1" type="Sprite" parent="."]
+[node name="AI" type="Node2D" parent="."]
 
-transform/pos = Vector2( -68.0187, 187.732 )
-texture = ExtResource( 3 )
-script/script = ExtResource( 4 )
+script/script = ExtResource( 3 )
+
+[node name="mech2" type="Sprite" parent="AI"]
+
+transform/pos = Vector2( 664.382, -0.420866 )
+texture = ExtResource( 4 )
+script/script = ExtResource( 5 )
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="Shooter" parent="Player" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 1002.72, 747.598 )
+
+[node name="Shooter 2" parent="Player" instance=ExtResource( 6 )]
+
+[node name="Camera" parent="." instance=ExtResource( 7 )]
 
 
+[editable path="Player/Shooter"]
