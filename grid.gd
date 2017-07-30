@@ -49,3 +49,27 @@ func move_object(start, end):
 
 func load_collison_map(map):
 	collision_map = map
+
+func get_path(from, to):
+	var x1 = Vector2(1,0)
+	var y1 = Vector2(0,1)
+	var adjacent = [from + y1, from+x1, from-y1,from-x1] #up left down right
+	var valid = []
+	for square in adjacent:
+		if grid.get_object(square) == "floor":
+			valid.append(square)
+	var selection = null
+	var min_dist = 9999999999
+	for square in valid:
+		var dist = (to - square).length()
+		if dist < min_dist:
+			min_dist = dist
+			selection = square
+	if min_dist == 0:
+		return [selection]
+	else:
+		result = get_path(selection, to)
+		selection = [selection]
+		for cell in result:
+			selection.append(cell)
+		return selection

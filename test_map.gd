@@ -6,6 +6,7 @@ var mech1
 var mech2
 var turn # whose turn is it
 var ai
+var ui
 var selected_unit
 var ability_callback
 
@@ -14,9 +15,10 @@ func _ready():
 	set_process(true)
 	turn = 0
 	ai = get_node("AI")
-	grid = load("res://grid.gd").new(50)
+	grid = load("res://grid.gd").new(80)
 	var collision_map = get_node("map/TileMap").get_used_cells()
 	grid.load_collison_map(collision_map)
+	ui = get_node("Camera")
 
 	get_node("map/TileMap").set_opacity(0)
 	
@@ -38,10 +40,9 @@ func _input(ev):
 			selected_unit.move(grid.get_coord(square))
 		else:
 			selected_unit.use_ability(ability_callback, grid.get_object(square))
+		ui.select_button(ability_callback, false)
 		ability_callback = null
-	if (ev.type==InputEvent.KEY):
-		mech1.attack("shoot", mech2)
-		pass_turn()
+		
 		
 func pass_turn():
 	turn = 1
@@ -59,11 +60,13 @@ func refresh_ui():
 			ui.set_ability(button, null)
 	ui.set_portrait(selected_unit.portrait)
 
+
 func _new_selection(object):
 	selected_unit = object
 	refresh_ui()
 
 func ability_used(index):
+	get_node("Camera").select_button(index, true)
 	ability_callback = index
 
 func _on_ability1_pressed():

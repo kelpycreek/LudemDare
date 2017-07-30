@@ -18,14 +18,14 @@ func _process(delta):
 		return
 		
 	var direction = (target - self.get_pos()).normalized()
-	var speed = 1000
+	var speed = 800
 	
 	var motion = direction * speed * delta
 	var new_pos = self.get_pos() + motion
 	self.set_pos(new_pos)
 	print(new_pos)
 	print(target)
-	if (self.get_pos() - target).length() < 2:
+	if (self.get_pos() - target).length() < 2.5:
 		target = null
 		
 		
