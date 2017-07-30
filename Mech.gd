@@ -7,6 +7,8 @@ extends Sprite
 var target = null
 var health
 
+signal new_selection(obj)
+
 func _ready():
 	set_process(true)
 	
@@ -28,3 +30,6 @@ func _process(delta):
 		
 func move(new_target):
 	target = new_target
+	
+func _selected():
+	emit_signal("new_selection", self)

@@ -6,6 +6,7 @@ var mech1
 var mech2
 var turn # whose turn is it
 var ai
+var selected_unit
 
 func _ready():
 	set_process_input(true)
@@ -34,4 +35,9 @@ func pass_turn():
 	turn = 1
 	ai.take_turn()
 	turn = 0
-	
+
+func refresh_ui():
+	return selected_unit
+
+func _new_selection():
+	selected # replace with function body
