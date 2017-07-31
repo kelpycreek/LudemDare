@@ -4,7 +4,7 @@
 [ext_resource path="res://test_tiles.res" type="TileSet" id=2]
 [ext_resource path="res://art/map1.png" type="Texture" id=3]
 [ext_resource path="res://AI.gd" type="Script" id=4]
-[ext_resource path="res://Shooter.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Turret.tscn" type="PackedScene" id=5]
 [ext_resource path="res://player.gd" type="Script" id=6]
 [ext_resource path="res://Camera.tscn" type="PackedScene" id=7]
 
@@ -42,10 +42,9 @@ texture = ExtResource( 3 )
 
 script/script = ExtResource( 4 )
 
-[node name="ai1" parent="AI" instance=ExtResource( 5 )]
+[node name="Turret" parent="AI" instance=ExtResource( 5 )]
 
-editor/display_folded = true
-transform/pos = Vector2( 1480.09, 493.816 )
+transform/pos = Vector2( 1311.39, 394.923 )
 
 [node name="Player" type="Node2D" parent="."]
 
@@ -53,6 +52,7 @@ script/script = ExtResource( 6 )
 
 [node name="Camera" parent="." instance=ExtResource( 7 )]
 
+editor/display_folded = true
 transform/pos = Vector2( -13.8235, -11.2884 )
 
 [node name="Camera2D" parent="Camera"]
@@ -76,5 +76,4 @@ transform/pos = Vector2( 794.537, 1047.09 )
 [connection signal="pressed" from="Camera/ui/Flee" to="." method="_on_Flee_pressed"]
 
 
-[editable path="AI/ai1"]
 [editable path="Camera"]
