@@ -26,7 +26,3 @@ func get_target(unit):
 			min_dist = dist
 			current_target = enemy
 	return current_target
-
-#pure movement function
-func movement(mech, target, grid)
-	
