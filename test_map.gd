@@ -27,7 +27,7 @@ func _ready():
 	mech1.connect("new_selection", self, "_new_selection")
 	
 	#set up AI team
-	mech2 = get_node("AI/mech2")
+	mech2 = get_node("AI/ai1")
 	grid.add_object(grid.get_cell(mech2.get_pos()), mech2)
 	
 
@@ -37,7 +37,7 @@ func _input(ev):
 	if (ev.type==InputEvent.MOUSE_BUTTON and ability_callback  != null):
 		var square = grid.get_cell(ev.pos)
 		if ability_callback == 0:
-			selected_unit.move(grid.get_coord(square))
+			movement(selected_unit, square)
 		else:
 			selected_unit.use_ability(ability_callback, grid.get_object(square))
 		ui.select_button(ability_callback, false)
@@ -49,6 +49,17 @@ func pass_turn():
 	ai.take_turn()
 	turn = 0
 
+func movement(mech, target):
+	if grid.get_object(target) != "floor":
+		return "invalid target"
+	var path = grid.get_path(grid.get_cell(selected_unit.get_pos()), target)
+	var coord_path = []
+	for node in path:
+		coord_path.append(grid.get_coord(node))
+	grid.move_object(grid.get_cell(selected_unit.get_pos()), target)
+	coord_path.invert()
+	mech.move_path(coord_path)
+
 func refresh_ui():
 	var ui = get_node("Camera")
 	var abilities = selected_unit.abilities
@@ -59,7 +70,6 @@ func refresh_ui():
 		else:
 			ui.set_ability(button, null)
 	ui.set_portrait(selected_unit.portrait)
-
 
 func _new_selection(object):
 	selected_unit = object
