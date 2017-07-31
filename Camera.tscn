@@ -119,4 +119,32 @@ margin/right = 1684.0
 margin/bottom = 1581.0
 stretch_mode = 0
 
+[node name="TU" type="RichTextLabel" parent="ui"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 8.0
+margin/top = 869.0
+margin/right = 234.0
+margin/bottom = 921.0
+bbcode/enabled = false
+bbcode/bbcode = ""
+visible_characters = -1
+
+[node name="Health" type="RichTextLabel" parent="ui"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 11.0
+margin/top = 818.0
+margin/right = 237.0
+margin/bottom = 870.0
+bbcode/enabled = false
+bbcode/bbcode = "HP: "
+visible_characters = -1
+
 
