@@ -6,41 +6,31 @@ extends Node2D
 
 var target = null
 var health
-var target_queue = []
-var tu
 
 signal new_selection(obj)
 
 func _ready():
 	set_process(true)
-	target_queue = []
 	
 func _process(delta):
 	var pos = get_pos()
 	if target == null:
-		if target_queue.size() > 0:
-			move(target_queue[0])
-			target_queue.pop_front()
-		else:
-			return
+		return
 		
 	var direction = (target - self.get_pos()).normalized()
-	var speed = 80
+	var speed = 800
 	
 	var motion = direction * speed * delta
 	var new_pos = self.get_pos() + motion
 	self.set_pos(new_pos)
+	print(new_pos)
+	print(target)
 	if (self.get_pos() - target).length() < 2.5:
 		target = null
 		
 		
 func move(new_target):
-	if tu > 1:
-		target = new_target
-		tu = tu - 1
-
-func move_path(path):
-	target_queue = path
-
+	target = new_target
+	
 func _selected():
 	emit_signal("new_selection", self)

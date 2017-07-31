@@ -1,9 +1,11 @@
+var valid_blocks
 var block_size
 var collision_map
 var objects
 
 func _init(size):
 	block_size = size
+	valid_blocks = []
 	objects = []
 
 func get_cell(vect): #get the cell coordinates from these real coordinates
@@ -43,21 +45,18 @@ func move_object(start, end):
 	for object in objects:
 		if object['cell'] == start:
 			object['cell'] = end
-			objects.remove(object)
 			return
 
 func load_collison_map(map):
 	collision_map = map
-	print(map.size())
 
-func get_path(from, to, current=[]):
+func get_path(from, to):
 	var x1 = Vector2(1,0)
 	var y1 = Vector2(0,1)
 	var adjacent = [from + y1, from+x1, from-y1,from-x1] #up left down right
 	var valid = []
 	for square in adjacent:
-		var object = get_object(square)
-		if typeof(object) == TYPE_STRING and object == "floor" and not square in current:
+		if grid.get_object(square) == "floor":
 			valid.append(square)
 	var selection = null
 	var min_dist = 9999999999
@@ -66,15 +65,11 @@ func get_path(from, to, current=[]):
 		if dist < min_dist:
 			min_dist = dist
 			selection = square
-	if valid.size() == 0:
-		return []
 	if min_dist == 0:
 		return [selection]
 	else:
-		var temp = current
-		temp.append(selection)
-		var result = get_path(selection, to, temp)
-		result.append(selection)
-		print(result)
-		return result
-		
+		result = get_path(selection, to)
+		selection = [selection]
+		for cell in result:
+			selection.append(cell)
+		return selection
