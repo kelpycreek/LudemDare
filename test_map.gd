@@ -62,6 +62,9 @@ func _input(ev):
 func pass_turn():
 	turn = 1
 	ai.take_turn()
+	#refresh player mechs
+	for mech in player_mechs:
+		mech.turn_start()
 	turn = 0
 
 func movement(mech, target):

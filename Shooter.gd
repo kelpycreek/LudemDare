@@ -12,18 +12,17 @@ var abilities = [
 
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	._ready() # call parent class
 	health = 10
-	tu = 12
+	tu_max = 12
 	set_process(true)
+	._ready() # call parent class
 
 func _process(delta):
 	._process(delta)
 
 func use_ability(ability_number, target):
 	if typeof(target) == TYPE_STRING:
+		print( "invalid target")
 		return "invalid target"
 	if ability_number == 1:
 		shoot(target)

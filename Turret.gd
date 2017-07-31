@@ -10,9 +10,9 @@ var abilities = []
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
-	._ready() # call parent class
 	health = 10
-	tu = 12
+	tu_max = 5
+	._ready() # call parent class
 	set_process(true)
 
 func _process(delta):

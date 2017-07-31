@@ -8,12 +8,14 @@ var target = null
 var health
 var target_queue = []
 var tu
+var tu_max
 
 signal new_selection(obj)
 
 func _ready():
 	set_process(true)
 	target_queue = []
+	tu = tu_max
 	
 func _process(delta):
 	var pos = get_pos()
@@ -42,6 +44,9 @@ func move(new_target):
 	else:
 		target = null
 		print("out of tu!")
+
+func turn_start():
+	tu = tu_max
 
 func move_path(path):
 	target_queue = path
