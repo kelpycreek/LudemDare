@@ -48,7 +48,7 @@ script/script = ExtResource( 4 )
 
 [node name="mech2" type="Sprite" parent="AI"]
 
-transform/pos = Vector2( 987.741, 264.294 )
+transform/pos = Vector2( 664.382, -0.420866 )
 texture = ExtResource( 5 )
 script/script = ExtResource( 6 )
 
@@ -62,12 +62,15 @@ transform/pos = Vector2( 1002.72, 747.598 )
 
 [node name="Camera" parent="." instance=ExtResource( 8 )]
 
-editor/display_folded = true
 transform/pos = Vector2( -43.2892, -19.8825 )
 
 [node name="Camera2D" parent="Camera"]
 
 transform/pos = Vector2( 803.179, 605.605 )
+
+[node name="abilities" parent="Camera/ui"]
+
+editor/display_folded = true
 
 [connection signal="pressed" from="Camera/ui/abilities/ability1" to="." method="_on_ability1_pressed"]
 
