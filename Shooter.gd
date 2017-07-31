@@ -10,6 +10,7 @@ var abilities = [
 			{"name":"Burst Fire", "texture":"res://art/ability3.png"}
 ]
 
+
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
@@ -46,6 +47,10 @@ func burst_fire(target):
 	target.health = target.health - 10
 	print(target.health)
 	tu = tu - 7
+	
+func get_ui_inf():
+	var result = {'portrait': portrait, 'abilities':abilities, 'hp':health, 'tu': tu}
+	return result
 	
 	
 func _selected():

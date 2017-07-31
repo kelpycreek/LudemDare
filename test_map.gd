@@ -30,6 +30,10 @@ func _ready():
 	mech2 = get_node("AI/ai1")
 	grid.add_object(grid.get_cell(mech2.get_pos()), mech2)
 	
+func _process(delta):
+	if selected_unit:
+		ui.set_ui_light(selected_unit.get_ui_inf())
+	
 
 func _input(ev):
 	if turn == 1:
