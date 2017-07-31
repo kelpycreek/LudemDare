@@ -24,6 +24,7 @@ func _ready():
 	ui = get_node("Camera")
 
 	get_node("map/TileMap").set_opacity(0)
+	globals.canmove = true
 	
 	#set up players team
 	player = get_node("Player")
@@ -64,6 +65,8 @@ func update_game_state():
 	kill_dead(ai.get_children())
 	if is_loss():
 		lose()
+	elif is_win():
+		win()
 
 func kill_dead(mechs):
 	for mech in mechs:
@@ -110,6 +113,16 @@ func is_loss():
 func lose():
 	turn = 1
 	print("You lose!")
+
+func is_win():
+	for mech in ai.get_children():
+		if mech.alive():
+			return false
+	return true
+
+func win():
+	turn = 1
+	print("you win!")
 
 func _new_selection(object):
 	selected_unit = object

@@ -31,6 +31,11 @@ func shoot(target):
 		var message = "not enough tu!"
 		print(message)
 		return message
+	var dist = self.get_pos().distance_to(target.get_pos())
+	if dist > 800:
+		var message = "out of range"
+		print(message)
+		return message
 	target.hit(5)
 	print(target.health)
 	tu = tu - 5
@@ -38,6 +43,11 @@ func shoot(target):
 func burst_fire(target):
 	if tu < 7:
 		var message = "not enough tu!"
+		print(message)
+		return message
+	var dist = self.get_pos().distance_to(target.get_pos())
+	if dist > 100:
+		var message = "out of range"
 		print(message)
 		return message
 	target.hit(10)
