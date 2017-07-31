@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=1]
+
+[ext_resource path="res://Turret.gd" type="Script" id=1]
+[ext_resource path="res://art/turret1.png" type="Texture" id=2]
+[ext_resource path="res://art/hit1a.png" type="Texture" id=3]
+[ext_resource path="res://art/hit1b.png" type="Texture" id=4]
+[ext_resource path="res://art/hit1c.png" type="Texture" id=5]
+[ext_resource path="res://art/hit1d.png" type="Texture" id=6]
+[ext_resource path="res://art/hit1e.png" type="Texture" id=7]
+[ext_resource path="res://art/hit1f.png" type="Texture" id=8]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), null, null ],
+"loop": false,
+"name": "default",
+"speed": 12.0
+} ]
+
+[node name="Turret" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+
+frames = SubResource( 1 )
+animation = "default"
+frame = 7
+
+[node name="Button" type="Button" parent="."]
+
+visibility/opacity = 0.2
+visibility/behind_parent = true
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -38.0
+margin/top = -59.0
+margin/right = 41.0
+margin/bottom = 61.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+flat = false
+
+[connection signal="pressed" from="Button" to="." method="_selected"]
+
+

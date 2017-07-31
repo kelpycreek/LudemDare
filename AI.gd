@@ -13,7 +13,7 @@ func _ready():
 
 func take_turn():
 	for unit in get_children():
-		unit.attack("shoot", get_target(unit))
+		unit.use_ability(1, get_target(unit))
 	return
 	
 func get_target(unit):

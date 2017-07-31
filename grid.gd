@@ -43,7 +43,6 @@ func move_object(start, end):
 	for object in objects:
 		if object['cell'] == start:
 			object['cell'] = end
-			objects.remove(object)
 			return
 
 func load_collison_map(map):

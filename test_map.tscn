@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://test_map.gd" type="Script" id=1]
 [ext_resource path="res://test_tiles.res" type="TileSet" id=2]
 [ext_resource path="res://art/map1.png" type="Texture" id=3]
 [ext_resource path="res://AI.gd" type="Script" id=4]
 [ext_resource path="res://Shooter.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Camera.tscn" type="PackedScene" id=6]
+[ext_resource path="res://player.gd" type="Script" id=6]
+[ext_resource path="res://Camera.tscn" type="PackedScene" id=7]
 
 [node name="root" type="Node2D"]
 
@@ -43,17 +44,15 @@ script/script = ExtResource( 4 )
 
 [node name="ai1" parent="AI" instance=ExtResource( 5 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 1480.09, 493.816 )
 
 [node name="Player" type="Node2D" parent="."]
 
-[node name="mech1" parent="Player" instance=ExtResource( 5 )]
+script/script = ExtResource( 6 )
 
-transform/pos = Vector2( 320.175, 509.318 )
+[node name="Camera" parent="." instance=ExtResource( 7 )]
 
-[node name="Camera" parent="." instance=ExtResource( 6 )]
-
-editor/display_folded = true
 transform/pos = Vector2( -13.8235, -11.2884 )
 
 [node name="Camera2D" parent="Camera"]
@@ -72,5 +71,10 @@ transform/pos = Vector2( 794.537, 1047.09 )
 
 [connection signal="pressed" from="Camera/ui/abilities/ability4" to="." method="_on_ability4_pressed"]
 
+[connection signal="pressed" from="Camera/ui/EndTurn" to="." method="_on_EndTurn_pressed"]
 
+[connection signal="pressed" from="Camera/ui/Flee" to="." method="_on_Flee_pressed"]
+
+
+[editable path="AI/ai1"]
 [editable path="Camera"]
