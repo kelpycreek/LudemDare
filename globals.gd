@@ -13,3 +13,4 @@ var node5dead = false
 var node6dead = false
 var node7dead = false
 var node8dead = false
+var canmove = true
