@@ -44,7 +44,7 @@ script/script = ExtResource( 4 )
 
 [node name="Turret" parent="AI" instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 1311.39, 394.923 )
+transform/pos = Vector2( 1311.39, 443.158 )
 
 [node name="Player" type="Node2D" parent="."]
 

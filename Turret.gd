@@ -31,7 +31,7 @@ func shoot(target):
 		var message = "not enough tu!"
 		print(message)
 		return message
-	target.health = target.health - 5
+	target.hit(5)
 	print(target.health)
 	tu = tu - 5
 	
@@ -40,7 +40,7 @@ func burst_fire(target):
 		var message = "not enough tu!"
 		print(message)
 		return message
-	target.health = target.health - 10
+	target.hit(10)
 	print(target.health)
 	tu = tu - 7
 	

@@ -13,9 +13,10 @@ func _ready():
 
 func take_turn():
 	for unit in get_children():
-		unit.turn_start()
-		unit.use_ability(1, get_target(unit))
-	return
+		if unit.alive():
+			unit.turn_start()
+			unit.use_ability(1, get_target(unit))
+
 	
 func get_target(unit):
 	var current_target = null

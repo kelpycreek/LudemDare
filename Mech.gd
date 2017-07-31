@@ -35,8 +35,7 @@ func _process(delta):
 	self.set_pos(new_pos)
 	if (self.get_pos() - target).length() < 2.5:
 		target = null
-		
-		
+
 func move(new_target):
 	if tu >= 1:
 		target = new_target
@@ -47,9 +46,16 @@ func move(new_target):
 
 func turn_start():
 	tu = tu_max
+	
+func hit(damage):
+	health = health - damage
+
 
 func move_path(path):
 	target_queue = path
+
+func alive():
+	return health > 0
 
 func _selected():
 	emit_signal("new_selection", self)

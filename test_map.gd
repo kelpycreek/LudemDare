@@ -44,6 +44,7 @@ func _ready():
 func _process(delta):
 	if selected_unit:
 		ui.set_ui_light(selected_unit.get_ui_inf())
+	update_game_state()
 	
 
 func _input(ev):
@@ -58,7 +59,18 @@ func _input(ev):
 		ui.select_button(ability_callback, false)
 		ability_callback = null
 		
-		
+func update_game_state():
+	kill_dead(player_mechs)
+	kill_dead(ai.get_children())
+	if is_loss():
+		lose()
+
+func kill_dead(mechs):
+	for mech in mechs:
+		if not mech.alive():
+			grid.remove_object(mech)
+			mech.set_hidden(true)
+
 func pass_turn():
 	turn = 1
 	ai.take_turn()
@@ -88,6 +100,16 @@ func refresh_ui():
 		else:
 			ui.set_ability(button, null)
 	ui.set_portrait(selected_unit.portrait)
+
+func is_loss():
+	for mech in player_mechs:
+		if mech.alive():
+			return false
+	return true
+
+func lose():
+	turn = 1
+	print("You lose!")
 
 func _new_selection(object):
 	selected_unit = object
