@@ -49,7 +49,9 @@ func turn_start():
 	
 func hit(damage):
 	health = health - damage
-
+	var animation = get_node("onhit")
+	animation.set_frame(0)
+	animation.play('default')
 
 func move_path(path):
 	target_queue = path

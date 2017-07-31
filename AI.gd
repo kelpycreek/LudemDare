@@ -16,15 +16,15 @@ func take_turn():
 		if unit.alive():
 			unit.turn_start()
 			unit.use_ability(1, get_target(unit))
-
 	
 func get_target(unit):
 	var current_target = null
 	var min_dist = 9999999999999
 	for enemy in player.get_children():
-		var dist = enemy.get_pos() - unit.get_pos()
-		dist = dist.length()
-		if dist < min_dist:
-			min_dist = dist
-			current_target = enemy
+		if enemy.alive():
+			var dist = enemy.get_pos() - unit.get_pos()
+			dist = dist.length()
+			if dist < min_dist:
+				min_dist = dist
+				current_target = enemy
 	return current_target

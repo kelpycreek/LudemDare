@@ -12,7 +12,7 @@ var abilities = [
 
 
 func _ready():
-	health = 10
+	health = 20
 	tu_max = 12
 	set_process(true)
 	._ready() # call parent class
