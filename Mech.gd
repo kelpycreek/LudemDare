@@ -21,6 +21,7 @@ func _process(delta):
 		if target_queue.size() > 0:
 			move(target_queue[0])
 			target_queue.pop_front()
+			return
 		else:
 			return
 		
@@ -35,9 +36,12 @@ func _process(delta):
 		
 		
 func move(new_target):
-	if tu > 1:
+	if tu >= 1:
 		target = new_target
 		tu = tu - 1
+	else:
+		target = null
+		print("out of tu!")
 
 func move_path(path):
 	target_queue = path

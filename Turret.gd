@@ -3,12 +3,8 @@ extends "res://Mech.gd"
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
-var portrait = "res://art/shooter1.png"
-var abilities = [
-			{"name":"move", "texture":"res://art/ability0.png"},
-			{"name":"Shoot", "texture":"res://art/ability4.png"},
-			{"name":"Burst Fire", "texture":"res://art/ability3.png"}
-]
+var portrait = "res://art/turret1.png"
+var abilities = []
 
 
 func _ready():
