@@ -14,3 +14,4 @@ var node6dead = false
 var node7dead = false
 var node8dead = false
 var canmove = true
+var powerlevel = 5

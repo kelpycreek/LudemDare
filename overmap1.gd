@@ -1,7 +1,6 @@
 extends Node2D
-var powerlevel = 5
 func _ready():
-	get_node("UI/Sprite/pop1").set_bbcode(str(powerlevel))
+	get_node("UI/Sprite/pop1").set_bbcode(str(globals.powerlevel))
 	get_node("UI/launcher").show()
 	if(globals.currentnode == 1):
 		get_node("UI/launcher").hide()
@@ -47,7 +46,7 @@ func launcherswitch():
 
 
 func killnodes():
-	if(powerlevel == 0):
+	if(globals.powerlevel == 0):
 		get_tree().change_scene("res://lose.tscn")
 	if(globals.currentnode == 1):
 		globals.node1dead = true
@@ -92,8 +91,8 @@ func _on_hbutton_pressed():
 func _on_node1_pressed():
 	if(globals.canmove == true and globals.currentnode == 2):
 		globals.canmove = false
-		powerlevel = powerlevel - 1
-		get_node("UI/Sprite/pop1").set_bbcode(str(powerlevel))
+		globals.powerlevel = globals.powerlevel - 1
+		get_node("UI/Sprite/pop1").set_bbcode(str(globals.powerlevel))
 		get_node("bg/reticle").set_pos(get_node("bg/node1").get_pos())
 		killnodes()
 		hidenodes()
@@ -106,8 +105,8 @@ func _on_node1_pressed():
 func _on_node7_pressed():
 	if(globals.canmove == true and globals.currentnode == 2 or globals.currentnode == 3 or globals.currentnode == 4 or globals.currentnode == 5 or globals.currentnode == 6):
 		globals.canmove = false
-		powerlevel = powerlevel - 1
-		get_node("UI/Sprite/pop1").set_bbcode(str(powerlevel))
+		globals.powerlevel = globals.powerlevel - 1
+		get_node("UI/Sprite/pop1").set_bbcode(str(globals.powerlevel))
 		get_node("bg/reticle").set_pos(get_node("bg/node7").get_pos())
 		killnodes()
 		hidenodes()
@@ -119,8 +118,8 @@ func _on_node7_pressed():
 func _on_node3_pressed():
 	if(globals.canmove == true and globals.currentnode == 2 or globals.currentnode == 7):
 		globals.canmove = false
-		powerlevel = powerlevel - 1
-		get_node("UI/Sprite/pop1").set_bbcode(str(powerlevel))
+		globals.powerlevel = globals.powerlevel - 1
+		get_node("UI/Sprite/pop1").set_bbcode(str(globals.powerlevel))
 		get_node("bg/reticle").set_pos(get_node("bg/node3").get_pos())
 		killnodes()
 		hidenodes()
@@ -132,8 +131,8 @@ func _on_node3_pressed():
 func _on_node4_pressed():
 	if(globals.canmove == true and globals.currentnode == 2 or globals.currentnode == 7 or globals.currentnode == 5):
 		globals.canmove = false
-		powerlevel = powerlevel - 1
-		get_node("UI/Sprite/pop1").set_bbcode(str(powerlevel))
+		globals.powerlevel = globals.powerlevel - 1
+		get_node("UI/Sprite/pop1").set_bbcode(str(globals.powerlevel))
 		get_node("bg/reticle").set_pos(get_node("bg/node4").get_pos())
 		killnodes()
 		hidenodes()
@@ -145,8 +144,8 @@ func _on_node4_pressed():
 func _on_node5_pressed():
 	if(globals.canmove == true and globals.currentnode == 4 or globals.currentnode == 7 or globals.currentnode == 8):
 		globals.canmove = false
-		powerlevel = powerlevel - 1
-		get_node("UI/Sprite/pop1").set_bbcode(str(powerlevel))
+		globals.powerlevel = globals.powerlevel - 1
+		get_node("UI/Sprite/pop1").set_bbcode(str(globals.powerlevel))
 		get_node("bg/reticle").set_pos(get_node("bg/node5").get_pos())
 		killnodes()
 		hidenodes()
@@ -158,8 +157,8 @@ func _on_node5_pressed():
 func _on_node6_pressed():
 	if(globals.canmove == true and globals.currentnode == 7 or globals.currentnode == 8 ):
 		globals.canmove = false
-		powerlevel = powerlevel - 1
-		get_node("UI/Sprite/pop1").set_bbcode(str(powerlevel))
+		globals.powerlevel = globals.powerlevel - 1
+		get_node("UI/Sprite/pop1").set_bbcode(str(globals.powerlevel))
 		get_node("bg/reticle").set_pos(get_node("bg/node6").get_pos())
 		killnodes()
 		hidenodes()
@@ -171,8 +170,8 @@ func _on_node6_pressed():
 func _on_node8_pressed():
 	if(globals.canmove == true and globals.currentnode == 5 or globals.currentnode == 6 ):
 		globals.canmove = false
-		powerlevel = powerlevel - 1
-		get_node("UI/Sprite/pop1").set_bbcode(str(powerlevel))
+		globals.powerlevel = globals.powerlevel - 1
+		get_node("UI/Sprite/pop1").set_bbcode(str(globals.powerlevel))
 		get_node("bg/reticle").set_pos(get_node("bg/node8").get_pos())
 		killnodes()
 		hidenodes()
@@ -184,8 +183,8 @@ func _on_node8_pressed():
 func _on_node2_pressed():
 	if(globals.canmove == true and globals.currentnode == 1 or globals.currentnode == 4 or globals.currentnode == 7 or globals.currentnode == 3):
 		globals.canmove = false
-		powerlevel = powerlevel - 1
-		get_node("UI/Sprite/pop1").set_bbcode(str(powerlevel))
+		globals.powerlevel = globals.powerlevel - 1
+		get_node("UI/Sprite/pop1").set_bbcode(str(globals.powerlevel))
 		get_node("bg/reticle").set_pos(get_node("bg/node2").get_pos())
 		killnodes()
 		hidenodes()
@@ -198,7 +197,7 @@ func _on_star1_pressed():
 	if(globals.canmove == true and globals.currentnode == 8 or globals.currentnode == 6):
 		globals.canmove = false
 		get_node("bg/reticle").set_pos(get_node("bg/star1").get_pos())
-		if(powerlevel == -1):
+		if(globals.powerlevel == -1):
 			get_tree().change_scene("res://lose.tscn")
 		get_tree().change_scene("res://win.tscn")
 	#	killnodes()
