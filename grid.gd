@@ -44,10 +44,23 @@ func move_object(start, end):
 		if object['cell'] == start:
 			object['cell'] = end
 			return
+			
+func remove_object(obj):
+	for object in objects:
+		if object['object'] == obj:
+			objects.erase(object)
+			return
+
+func remove_cell(cell):
+	for object in objects:
+		if object['cell'] == cell:
+			objects.erase(object)
+			return
 
 func load_collison_map(map):
 	collision_map = map
 	print(map.size())
+
 
 func get_path(from, to, current=[]):
 	var x1 = Vector2(1,0)
