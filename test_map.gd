@@ -83,7 +83,9 @@ func pass_turn():
 	turn = 0
 
 func movement(mech, target):
-	if grid.get_object(target) != "floor":
+	var cell = grid.get_object(target)
+	if typeof(cell) != TYPE_STRING or cell != "floor":
+		print("invalid target")
 		return "invalid target"
 	var path = grid.get_path(grid.get_cell(selected_unit.get_pos()), target)
 	var coord_path = []
