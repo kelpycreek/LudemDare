@@ -44,7 +44,6 @@ func launcherswitch():
 	if(globals.currentnode == 8 and globals.node8dead == true):
 		get_node("UI/launcher").hide()
 
-
 func killnodes():
 	if(globals.powerlevel < 1):
 		get_tree().change_scene("res://lose.tscn")
