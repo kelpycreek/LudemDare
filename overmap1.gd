@@ -89,7 +89,7 @@ func _on_hbutton_pressed():
 	get_tree().change_scene("res://hangar.tscn")
 
 func _on_node1_pressed():
-	if(globals.canmove == true and globals.currentnode == 2):
+	if( globals.currentnode == 2):
 		globals.canmove = false
 		globals.powerlevel = globals.powerlevel - 1
 		get_node("UI/Sprite/pop1").set_bbcode(str(globals.powerlevel))
@@ -103,7 +103,9 @@ func _on_node1_pressed():
 
 
 func _on_node7_pressed():
-	if(globals.canmove == true and globals.currentnode == 2 or globals.currentnode == 3 or globals.currentnode == 4 or globals.currentnode == 5 or globals.currentnode == 6):
+	if not globals.canmove:
+		return
+	if( globals.currentnode == 2 or globals.currentnode == 3 or globals.currentnode == 4 or globals.currentnode == 5 or globals.currentnode == 6):
 		globals.canmove = false
 		globals.powerlevel = globals.powerlevel - 1
 		get_node("UI/Sprite/pop1").set_bbcode(str(globals.powerlevel))
@@ -116,7 +118,9 @@ func _on_node7_pressed():
 			get_node("UI/launcher").show()
 
 func _on_node3_pressed():
-	if(globals.canmove == true and globals.currentnode == 2 or globals.currentnode == 7):
+	if not globals.canmove:
+		return
+	if( globals.currentnode == 2 or globals.currentnode == 7):
 		globals.canmove = false
 		globals.powerlevel = globals.powerlevel - 1
 		get_node("UI/Sprite/pop1").set_bbcode(str(globals.powerlevel))
@@ -129,7 +133,9 @@ func _on_node3_pressed():
 			get_node("UI/launcher").show()
 
 func _on_node4_pressed():
-	if(globals.canmove == true and globals.currentnode == 2 or globals.currentnode == 7 or globals.currentnode == 5):
+	if not globals.canmove:
+		return
+	if( globals.currentnode == 2 or globals.currentnode == 7 or globals.currentnode == 5):
 		globals.canmove = false
 		globals.powerlevel = globals.powerlevel - 1
 		get_node("UI/Sprite/pop1").set_bbcode(str(globals.powerlevel))
@@ -142,7 +148,9 @@ func _on_node4_pressed():
 			get_node("UI/launcher").show()
 
 func _on_node5_pressed():
-	if(globals.canmove == true and globals.currentnode == 4 or globals.currentnode == 7 or globals.currentnode == 8):
+	if not globals.canmove:
+		return
+	if( globals.currentnode == 4 or globals.currentnode == 7 or globals.currentnode == 8):
 		globals.canmove = false
 		globals.powerlevel = globals.powerlevel - 1
 		get_node("UI/Sprite/pop1").set_bbcode(str(globals.powerlevel))
@@ -155,7 +163,9 @@ func _on_node5_pressed():
 			get_node("UI/launcher").show()
 
 func _on_node6_pressed():
-	if(globals.canmove == true and globals.currentnode == 7 or globals.currentnode == 8 ):
+	if not globals.canmove:
+		return
+	if( globals.currentnode == 7 or globals.currentnode == 8 ):
 		globals.canmove = false
 		globals.powerlevel = globals.powerlevel - 1
 		get_node("UI/Sprite/pop1").set_bbcode(str(globals.powerlevel))
@@ -168,7 +178,9 @@ func _on_node6_pressed():
 			get_node("UI/launcher").show()
 
 func _on_node8_pressed():
-	if(globals.canmove == true and globals.currentnode == 5 or globals.currentnode == 6 ):
+	if not globals.canmove:
+		return
+	if( globals.currentnode == 5 or globals.currentnode == 6 ):
 		globals.canmove = false
 		globals.powerlevel = globals.powerlevel - 1
 		get_node("UI/Sprite/pop1").set_bbcode(str(globals.powerlevel))
@@ -181,7 +193,9 @@ func _on_node8_pressed():
 			get_node("UI/launcher").show()
 
 func _on_node2_pressed():
-	if(globals.canmove == true and globals.currentnode == 1 or globals.currentnode == 4 or globals.currentnode == 7 or globals.currentnode == 3):
+	if not globals.canmove:
+		return
+	if( globals.currentnode == 1 or globals.currentnode == 4 or globals.currentnode == 7 or globals.currentnode == 3):
 		globals.canmove = false
 		globals.powerlevel = globals.powerlevel - 1
 		get_node("UI/Sprite/pop1").set_bbcode(str(globals.powerlevel))
@@ -194,7 +208,9 @@ func _on_node2_pressed():
 			get_node("UI/launcher").show()
 
 func _on_star1_pressed():
-	if(globals.canmove == true and globals.currentnode == 8 or globals.currentnode == 6):
+	if not globals.canmove:
+		return
+	if( globals.currentnode == 8 or globals.currentnode == 6):
 		globals.canmove = false
 		get_node("bg/reticle").set_pos(get_node("bg/star1").get_pos())
 		if(globals.powerlevel == -1):
