@@ -113,6 +113,8 @@ func is_loss():
 func lose():
 	turn = 1
 	print("You lose!")
+	globals.powerlevel = globals.powerlevel - 1
+	get_tree().change_scene("res://overmap1.tscn")
 
 func is_win():
 	for mech in ai.get_children():
@@ -123,6 +125,7 @@ func is_win():
 func win():
 	turn = 1
 	print("you win!")
+	get_tree().change_scene("res://overmap1.tscn")
 
 func _new_selection(object):
 	selected_unit = object
@@ -151,4 +154,4 @@ func _on_EndTurn_pressed():
 
 
 func _on_Flee_pressed():
-	pass # Needs to return to overmap
+	lose()
