@@ -46,7 +46,7 @@ func launcherswitch():
 
 
 func killnodes():
-	if(globals.powerlevel == 0):
+	if(globals.powerlevel < 1):
 		get_tree().change_scene("res://lose.tscn")
 	if(globals.currentnode == 1):
 		globals.node1dead = true
