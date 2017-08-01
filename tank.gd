@@ -3,7 +3,7 @@ extends "res://Mech.gd"
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
-var portrait = "res://art/shooter1.png"
+var portrait = "res://art/tank1.png"
 var abilities = [
 			{"name":"move", "texture":"res://art/ability0.png"},
 			{"name":"Punch", "texture":"res://art/ability1.png"},
